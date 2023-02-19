@@ -3,46 +3,50 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(HelloFlutterApp());
+  runApp(ContactProfilePage());
 }
 
-class HelloFlutterApp extends StatefulWidget {
-  @override
-  _HelloFlutterAppState createState() => _HelloFlutterAppState();
-}
-
-String englishText = "Hello Flutter";
-String frenchText = "Salut Flutter";
-
-class _HelloFlutterAppState extends State<HelloFlutterApp> {
-  String displayText = englishText;
+class ContactProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Home"),
-          leading: Icon(Icons.home),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.refresh),
-              onPressed: () {
-                setState(() {
-                  displayText =
-                      displayText == englishText ? frenchText : englishText;
-                });
-              },
-            )
-          ],
-        ),
-        body: Center(
-          child: Text(
-            displayText,
-            style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.blueGrey,
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+                onPressed: () {},
+              ),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.star_border,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    print("Star preseed");
+                  },
+                )
+              ],
+            ),
+            body: ListView(
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Container(
+                      width: double.infinity,
+                      height: 250,
+                      child: Image.network(
+                          "https://github.com/ptyagicodecamp/educative_flutter/raw/profile_1/assets/profile.jpg?raw=true",
+                          fit: BoxFit.cover),
+                    )
+                  ],
+                )
+              ],
+            )));
   }
 }
